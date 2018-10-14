@@ -1,0 +1,70 @@
+﻿@model LampStore.WebUI.Models.OrderViewModel
+
+<form ng-submit="validateInfo()">
+    <div>
+        <div class="form-group">
+            <label class="control-label">
+                First name<span>*</span>:
+            </label>
+            <input type="text"
+                   ng-model="viewModel.firstName"
+                   class="form-control"
+                   required>
+        </div>
+        <div class="form-group">
+            <label class="control-label">
+                Last name<span>*</span>:
+            </label>
+            <input type="text"
+                   ng-model="viewModel.lastName"
+                   class="form-control"
+                   required>
+        </div>
+        <div class="form-group">
+            <label class="control-label">
+                Company name:
+            </label>
+            <input type="text"
+                   ng-model="viewModel.companyName"
+                   class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="control-label">
+                Inn<span>*</span>:
+            </label>
+            <input type="text"
+                   ng-model="viewModel.inn"
+                   required
+                   class="form-control">
+        </div>
+        <button btn-request-state class="btn btn-primary">
+            Next step<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div>
+        <div class="form-group">
+            <label class="control-label">
+                Email<span>*</span>:
+            </label>
+            <input type="email"
+                   ng-model="viewModel.email"
+                   class="form-control"
+                   required>
+        </div>
+        <div class="form-group">
+            <label class="control-label">
+                Phone number<span>*</span>:
+            </label>
+            <input type="text"
+                   ng-model="viewModel.phoneNumber"
+                   class="form-control"
+                   required>
+        </div>
+        <div class="form-group">
+            <label class="control-label">
+                Address<span>*</span>:
+            </label>
+            <textarea ng-model="viewModel.address" class="form-control" rows="5" required></textarea>
+        </div>
+    </div>
+</form>

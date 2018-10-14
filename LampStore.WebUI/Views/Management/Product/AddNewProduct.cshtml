@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="product-management-content custom-container" ng-controller="EditProductController">
+    <div class="content-header">
+        <h3>Add new product</h3>
+    </div>
+
+    <form ng-submit="saveProduct()">
+        <div>
+            <div class="form-group">
+                <label class="control-label">Name:</label>
+                <input type="text" ng-model="viewModel.name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description:</label>
+                <input type="text" ng-model="viewModel.description" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Price:</label>
+                <input type="text" ng-model="viewModel.price" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Count:</label>
+                <input type="text" ng-model="viewModel.count" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Type:</label>
+                <select class="form-control"
+                        ng-options="type.Value as type.Description for type in viewModel.types"
+                        ng-model="viewModel.type"></select>
+            </div>
+            <a href="@Url.RouteUrl("ManagementProductsRoute", new { page = 1, type = "all", section = 1 })" class="btn btn-primary">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>Back to list
+            </a>
+            <button btn-request-state class="btn btn-primary">Add</button>
+        </div>
+        <div>
+            <div class="form-group">
+                <div image-input class="product-img">
+                    <div class="product-img-msg" ng-show="!viewModel.image">
+                        <i class="fa fa-picture-o"></i>
+                        <span><strong>DOWNLOAD IMAGE</strong></span>
+                    </div>
+                    <img class="img-square" alt="" ng-src="{{viewModel.imageUrl}}" />
+                </div>
+                <input class="hide" type="file" accept="image/*" />
+            </div>
+        </div>
+    </form>
+</div>

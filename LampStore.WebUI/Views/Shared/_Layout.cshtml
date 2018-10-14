@@ -1,0 +1,36 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans&amp;subset=cyrillic" rel="stylesheet">
+    <link href="~/Images/Header/favicon.ico" rel="icon" type="image/x-icon"/>
+    @Styles.Render("~/bundles/styles")
+</head>
+<body ng-app="LampStoreApp">
+    <header>
+        @Html.Partial("Partials/Header.Partial")
+    </header>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        @Html.Partial("Partials/Footer.Partial")
+    </footer>
+
+    @Html.Partial("Modals/Image.Modal")
+    @Html.Partial("Modals/Login.Modal")
+    @Html.Partial("Modals/Product.Modal")
+
+    @Scripts.Render("~/bundles/scripts")
+
+    <script type="text/javascript">
+        angular.module('LampStoreApp').value('serverModel', @Html.Raw(Json.Encode(Model)));
+    </script>
+</body>
+</html>

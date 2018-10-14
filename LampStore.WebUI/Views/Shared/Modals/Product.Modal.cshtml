@@ -1,0 +1,85 @@
+﻿<script type="text/ng-template" id="productModal">
+    <div class="modal product-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" ng-cloak>
+            <div class="modal-header">
+                <div class="close" ng-click="$hide()">
+                    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                </div>
+                <h4 ng-show="!$parent.isAdded">{{$parent.viewModel.product.Name}}</h4>
+                <h4 ng-show="$parent.isAdded">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    Item added to cart!
+                </h4>
+            </div>
+            <div class="modal-content">
+                <div ng-show="!$parent.isAdded">
+                    <div class="info-block">
+                        <div class="picture">
+                            <img src="{{$parent.viewModel.product.Picture}}" />
+                        </div>
+                        <div class="info">
+                            <div>
+                                <h5><strong>Price:</strong></h5>
+                                <span>&euro;{{$parent.viewModel.product.Price}}</span>
+                            </div>
+                            <div>
+                                <h5><strong>Type:</strong></h5>
+                                <span>{{$parent.viewModel.product.Type}}</span>
+                            </div>
+                            <div>
+                                <h5><strong>In stock:</strong></h5>
+                                <span>{{$parent.viewModel.product.Count}}</span>
+                            </div>
+                            <form ng-submit="addToCart('@ViewBag.CurrentUserId', $parent.viewModel.product.ProductId)">
+                                <button btn-request-state class="btn btn-primary">Add to cart</button>
+                                <div class="form-group">
+                                    <input type="number"
+                                           min="1"
+                                           class="form-control"
+                                           ng-init="viewModel.count = 1"
+                                           ng-model="viewModel.count">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="description-block">
+                        <h4><strong>Description</strong></h4>
+                        <hr />
+                        <p>{{$parent.viewModel.product.Description}}</p>
+                    </div>
+                </div>
+
+                <div class="add-success-message" ng-show="$parent.isAdded">
+                    <div>
+                        <div class="picture">
+                            <img src="{{$parent.viewModel.product.Picture}}" />
+                        </div>
+                        <div class="controls">
+                            <a href="" class="btn btn-primary" ng-click="continue()">Continue</a>
+                            <div></div>
+                            <a href="@Url.RouteUrl("CartRoute")" class="btn btn-primary">Cart</a>
+                        </div>
+                    </div>
+                    <div class="subtotal">
+                        <h4>
+                            <strong>{{$parent.viewModel.product.Name}}</strong>
+                            <br />
+                            <span>
+                                {{$parent.viewModel.count}} x &euro;{{$parent.viewModel.product.Price}}
+                            </span>
+                        </h4>
+                        <h4>
+                            <strong>Estimated Order Subtotal:</strong>
+                            <br />
+                            <span>
+                                {{$parent.viewModel.cartItemsCount}} item(s)
+                                <br />
+                                &euro;{{$parent.viewModel.totalPrice}}
+                            </span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

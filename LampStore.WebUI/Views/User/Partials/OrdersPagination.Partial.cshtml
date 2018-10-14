@@ -1,0 +1,31 @@
+﻿@model LampStore.WebUI.Models.OrdersViewModel
+
+@if (Model.OrdersCount > 16)
+{
+    <div class="pagination-content">
+        <ul class="pagination">
+            @if (Model.OrdersSection > 5)
+            {
+                <li>
+                    <a href="@Url.RouteUrl("ManagementOrdersRoute", new {page = Model.OrdersSection - 1, section = Model.OrdersSection - 5})">
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    </a>
+                </li>
+            }
+            @for (var i = Model.OrdersSection; i <= Model.OrdersCount/Model.Orders.Count && i < Model.OrdersSection + 5; i++)
+            {
+                <li ng-class="{ 'active' : viewModel.productsPage == @i}">
+                    <a href="@Url.RouteUrl("ManagementOrdersRoute", new {page = i, section = Model.OrdersSection})">@i</a>
+                </li>
+            }
+            @if (Model.OrdersSection <= Model.OrdersCount/Model.Orders.Count - 5)
+            {
+                <li>
+                    <a href="@Url.RouteUrl("ManagementOrdersRoute", new {page = Model.OrdersSection + 5, section = Model.OrdersSection + 5})">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}

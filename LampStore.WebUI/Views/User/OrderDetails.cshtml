@@ -1,0 +1,45 @@
+﻿@model LampStore.WebUI.Models.OrderViewModel
+
+
+<div class="order-content custom-container" ng-controller="ManagementOrdersController">
+    <div class="content-header">
+        <h3>
+            <i class="fa fa-info-circle" aria-hidden="true"></i>Order details
+        </h3>
+    </div>
+
+    <div>
+        <div class="user">
+            <h4>Your info:</h4>
+            <strong>Name: </strong>@Model.User.FullName
+            <br />
+            <strong>Company name: </strong>@Model.User.CompanyName
+            <br />
+            <strong>Inn: </strong>@Model.User.Inn
+            <br />
+            <strong>Email: </strong>@Model.User.Email
+            <br />
+            <strong>Phone number: </strong>@Model.User.PhoneNumber
+            <br />
+            <strong>Address: </strong>@Model.User.Address
+        </div>
+
+        <div class="cart">
+            <h4>Products:</h4>
+            <ul>
+                @foreach (var item in Model.Order.OrderItems)
+                {
+                    <li>
+                        <strong>@item.Product.Name</strong> (@item.Count ct x @item.Product.Price) &euro;@item.Price
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="controls">
+            <a href="@Url.RouteUrl("UserOrdersRoute", new { page = 1, section = 1 })" class="btn btn-primary">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>Back to list
+            </a>
+        </div>
+    </div>
+</div>

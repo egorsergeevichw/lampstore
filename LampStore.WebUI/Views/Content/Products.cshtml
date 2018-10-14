@@ -1,0 +1,26 @@
+﻿@model LampStore.WebUI.Models.ProductsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="products-page-content custom-container" ng-controller="ProductController">
+    <div>
+        @Html.Partial("Partials/Sidebar.Partial", Model)
+    </div>
+    <div class="product-list">
+        <div class="products">
+            @for (var i = 0; i < @Model.Products.Count; i++)
+            {
+                <div class="product" ng-click="showModal(@i)">
+                    <img src="@Model.Products[i].Picture" />
+                    <div class="text">
+                        <h4><strong>@Model.Products[i].Name</strong></h4>
+                        <span>&euro;@Model.Products[i].Price</span>
+                    </div>
+                </div>
+            }
+        </div>
+        @Html.Partial("Partials/Pagination.Partial", Model)
+    </div>
+</div>

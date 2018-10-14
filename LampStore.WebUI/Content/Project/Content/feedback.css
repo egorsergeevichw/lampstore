@@ -1,0 +1,20 @@
+/* FEEDBACK CONTENT start */
+
+.feedback-content h3 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.feedback-content i {
+    margin-right: 5px;
+}
+
+.feedback-content form {
+    width: 500px;
+}
+
+    .feedback-content form span {
+        color: red;
+    }
+
+/* FEEDBACK CONTENT end */

@@ -1,0 +1,5 @@
+LampStore/LampStore.WebUI/obj/
+LampStore/LampStore.UnitTests/obj/
+LampStore/LampStore.UnitTests/bin/
+LampStore/LampStore.Domain/obj/
+LampStore/LampStore.Domain/bin/

@@ -1,0 +1,117 @@
+﻿<div ng-controller="NavbarController">
+    <div class="header-first-block">
+        <div class="custom-container">
+            <div class="header-phone-text">
+                <i class="fa fa-phone-square" aria-hidden="true"></i>
+                <strong>Phone:</strong>
+                <span>+9 (999) 999 99 99</span>
+            </div>
+            <div class="header-top-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li href="" class="dropdown account-dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                @ViewBag.CurrentUser.Email
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="@Url.RouteUrl("UserOrdersRoute", new {page = 1, section = 1})">My orders</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="" ng-click="logout()">Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="" ng-click="showModal()">Log In</a>
+                        </li>
+                    }
+                    <li ng-init="viewModel.cartItemsCount = @ViewBag.CartItemsCount" ng-cloak>
+                        <a href="@Url.RouteUrl("CartRoute")" class="cart">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <div class="counter">{{viewModel.cartItemsCount}}</div>
+                        </a>
+                    </li>
+                    @*<li href="" class="dropdown language-dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                Language
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="language">
+                                    <a href="">
+                                        <img src="~/Images/Header/header-uk-flag.png"/>Eng
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="language">
+                                    <a href="">
+                                        <img src="~/Images/Header/header-fra-flag.png"/>Fra
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>*@
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li href="" class="dropdown management-dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                Management
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="@Url.RouteUrl("ManagementProductsRoute", new { page = 1, type = "all", section = 1 })">Products</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@Url.RouteUrl("ManagementOrdersRoute", new { page = 1, section = 1 })">Orders</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-second-block">
+        <div class="custom-container">
+            <img src="~/Images/Header/header-logo.jpg" />
+            <div class="site-title">
+                <h1>CLASSIC LAMP</h1>
+                <h4>this name was chosen randomly...</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-third-block">
+        <div class="custom-container">
+            <div class="header-sub-menu">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="btn" href="@Url.RouteUrl("ProductsRoute", new { page = 1, type = "all", section = 1 })">Products</a>
+                    </li>
+                    <li>
+                        <a class="btn" href="@Url.RouteUrl("AboutRoute")">About</a>
+                    </li>
+                    <li>
+                        <a class="btn" href="@Url.RouteUrl("FeedbackRoute")">Feedback</a>
+                    </li>
+                </ul>
+                <div class="divider"></div>
+                <form ng-submit="search()" ng-init="searchPage = '@ViewBag.SearchPage'">
+                    <input type="text" class="form-control" ng-model="viewModel.query" placeholder="Search">
+                    <button btn-request-state class="search-btn">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

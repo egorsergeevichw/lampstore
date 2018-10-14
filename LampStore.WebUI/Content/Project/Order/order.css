@@ -1,0 +1,63 @@
+/* ORDER CONTENT start */
+
+.order-content * {
+    transition: initial !important;
+}
+
+.order-content h3 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.order-content h4 {
+    font-weight: bold;
+}
+
+.order-content i {
+    margin-right: 5px;
+}
+
+.order-content .user {
+    line-height: 25px;
+}
+
+.order-content form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-content form span {
+    color: red;
+}
+
+.order-content form > div {
+    width: 500px;
+}
+
+.order-content form i {
+    margin-left: 5px;
+}
+
+.order-content form textarea {
+    height: 108px;
+}
+
+.order-content .cart ul {
+    padding-left: 18px;
+}
+
+.order-content .cart ul li {
+    margin: 5px 0;
+}
+
+.order-content .cart .total {
+    text-align: right;
+}
+
+.order-content .controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ORDER CONTENT end */

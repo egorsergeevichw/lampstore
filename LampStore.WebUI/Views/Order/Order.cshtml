@@ -1,0 +1,32 @@
+﻿@model LampStore.WebUI.Models.OrderViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="order-content custom-container" ng-controller="OrderController">
+    <div class="content-header">
+        <h3 ng-show="!isSuccess">
+            <i class="fa fa-balance-scale" aria-hidden="true"></i>Order
+        </h3>
+        <h3 ng-show="isSuccess">
+            <i class="fa fa-check-circle-o" aria-hidden="true"></i>Order success!
+        </h3>
+    </div>
+
+    <div class="user-info" ng-show="!isOrderInfo && !isSuccess">
+        @Html.Partial("Partials/UserInfo.Partial", Model)
+    </div>
+
+    <div class="order-info" ng-show="isOrderInfo && !isSuccess" ng-cloak>
+        @Html.Partial("Partials/OrderInfo.Partial", Model)
+    </div>
+
+    <div class="order-info" ng-show="isSuccess" ng-cloak>
+        <p>
+            Thank you for your order!
+            <br />
+            A letter was sent to your mailbox, which contains information about the order.
+        </p>
+    </div>
+</div>

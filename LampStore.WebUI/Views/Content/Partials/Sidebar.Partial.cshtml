@@ -1,0 +1,52 @@
+﻿@model LampStore.WebUI.Models.ProductsViewModel
+
+<div class="products-sidebar">
+    <div class="sidebar-menu categories">
+        <div>
+            <h5>СATEGORIES</h5>
+        </div>
+        <ul class="list-group">
+            @foreach (var type in @Model.ProductsTypes)
+            {
+                <li class="list-group-item" ng-class="{ 'active-category' : '@Model.ProductsType' == '@type.Name' }">
+                    <a href="@Url.RouteUrl("ProductsRoute", new { page = 1, type = type.Name.ToLower(), section = 1 })">@type.Description</a>
+                </li>
+            }
+        </ul>
+    </div>
+    @*<div class="sidebar-menu filters">
+        <div>
+            <h5>FILTERS</h5>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h6>Price:</h6>
+                <label>
+                    <input type="radio" name="price" value="asc" ng-click="setFilter(true, 'price')"/>high
+                </label><br />
+                <label>
+                    <input type="radio" name="price" value="desc" ng-click="setFilter(true, 'price')"/>low
+                </label><br />
+            </li>
+            <li class="list-group-item">
+                <h6>Rating:</h6>
+                <label>
+                    <input type="radio" name="rating" value="asc" />high
+                </label><br />
+                <label>
+                    <input type="radio" name="rating" value="desc" />low
+                </label><br />
+
+            </li>
+            <li class="list-group-item">
+                <h6>Date of adding:</h6>
+                <label>
+                    <input type="radio" name="date" value="asc" />newest
+                </label><br />
+                <label>
+                    <input type="radio" name="date" value="desc" />oldest
+                </label><br />
+            </li>
+        </ul>
+    </div>*@
+</div>

@@ -1,0 +1,38 @@
+﻿<script type="text/ng-template" id="loginModal">
+    <div class="modal login-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" ng-controller="LoginController">
+            <div class="modal-header">
+                <div class="close" ng-click="$hide()">
+                    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                </div>
+                <h3>Login</h3>
+            </div>
+            <div class="modal-content">
+                <form ng-submit="login()">
+                    <div class="form-group">
+                        <label class="control-label">Email:</label>
+                        <input type="email" 
+                               ng-model="viewModel.email" 
+                               class="form-control"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Password:</label>
+                        <input type="password" 
+                               ng-model="viewModel.password" 
+                               class="form-control"
+                               required>
+                    </div>
+                    <button btn-request-state class="btn btn-primary">Log In</button>
+                </form>
+                <div class="sub-content">
+                    <span>
+                        <a href="">Restore password</a>
+                        or
+                        <a href="@Url.RouteUrl("RegistrationRoute")">create new account.</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

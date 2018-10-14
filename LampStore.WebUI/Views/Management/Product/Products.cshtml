@@ -1,0 +1,63 @@
+﻿@model LampStore.WebUI.Models.ProductsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="products-management-content custom-container" ng-controller="ManagementProductsController">
+    <div class="content-header">
+        <h3>
+            Management products
+        </h3>
+    </div>
+
+    <div class="add-button">
+        <a href="@Url.RouteUrl("AddNewProductRoute")" class="btn btn-primary">Add new product</a>
+    </div>
+
+    @if (Model.Products.Count != 0)
+    {
+        <ul class="products-header">
+            <li>
+                <h5>Product image</h5>
+            </li>
+            <li style="right: 94px;">
+                <h5>Name</h5>
+            </li>
+            <li style="left: 2px;">
+                <h5>Count</h5>
+            </li>
+            <li style="left: 10px;">
+                <h5>Price</h5>
+            </li>
+            <li style="left: 10px;">
+                <h5>Delete</h5>
+            </li>
+        </ul>
+
+        <ul class="list-group products-items">          
+            @foreach (var item in Model.Products)
+            {
+                <li class="list-group-item" 
+                    ng-show="!viewModel.products[@Model.Products.IndexOf(item)].isDeleted">
+                    <img src="@item.Picture"/>
+                    <div class="item-price">
+                        <h4>@item.Name</h4>
+                    </div>
+                    <span>@item.Count</span>
+                    <span class="price">&euro;@item.Price</span>
+                    <div class="product-controls">
+                        <i class="fa fa-times-circle-o" ng-click="deleteProduct('@item.ProductId', @Model.Products.IndexOf(item))"></i>
+                        <a href="@Url.RouteUrl("EditProductRoute", new {productId = item.ProductId})"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </div>
+                </li>
+            }
+        </ul>
+
+        @Html.Partial("Partials/ProductsPagination.Partial", Model)
+    }
+    else
+    {
+        <span>You have not added any product yet.</span>
+    }
+</div>

@@ -1,0 +1,44 @@
+body * {
+    font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.custom-container {
+    width: 1170px;
+    padding: 0 15px;
+    margin: auto;
+}
+
+.content {
+    min-height: 430px;
+}
+
+.modal-dialog * {
+    transition: initial !important;
+}
+
+.modal-backdrop {
+    opacity: 0.5;
+}
+
+.modal-open {
+    overflow: initial;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.content-header {
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,55 @@
+﻿@model LampStore.WebUI.Models.OrdersViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="orders-management-content custom-container" ng-controller="ManagementOrdersController">
+    <div class="content-header">
+        <h3>
+            Management orders
+        </h3>
+    </div>
+
+    @if (Model.Orders.Count != 0)
+    {
+        <ul class="orders-header">
+            <li style="right: 5px;">
+                <h5>Purchase date</h5>
+            </li>
+            <li style="left: 35px;">
+                <h5>User name</h5>
+            </li>
+            <li style="left: 41px;">
+                <h5>Total price</h5>
+            </li>
+            <li style="left: 39px;">
+                <h5>Status</h5>
+            </li>
+            <li style="left: 35px;">
+                <h5>Show details</h5>
+            </li>
+        </ul>
+
+        <ul class="list-group orders-items">
+            @foreach (var order in Model.Orders)
+            {
+                <li class="list-group-item">
+                    <span>@order.PurchaseDate</span>
+                    <span>@order.User.FullName</span>
+                    <span>&euro;@order.TotalPrice</span>
+                    <span>@order.Status</span>
+                    <a href="@Url.RouteUrl("OrderDetailsRoute", new { orderId = order.OrderId })">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+
+        @Html.Partial("Partials/OrdersPagination.Partial", Model)
+    }
+    else
+    {
+        <span>You have not any order yet.</span>
+    }
+</div>

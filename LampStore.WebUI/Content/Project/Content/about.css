@@ -1,0 +1,80 @@
+/* ABOUT PAGE TEXT BLOCK start */
+
+.about-page-text-block h3 i {
+    margin-right: 5px;
+}
+
+.about-page-text-block p {
+    font-size: 17px;
+}
+
+/* ABOUT PAGE TEXT BLOCK end */
+
+/* ABOUT PAGE FIRST BLOCK start */
+
+.about-page-first-block {
+    margin-bottom: 50px;
+}
+
+    .about-page-first-block #mainCarousel {
+        margin-top: 5px;
+    }
+
+        .about-page-first-block #mainCarousel p {
+            font-size: 17px;
+        }
+
+/* ABOUT PAGE FIRST BLOCK end */
+
+/* ABOUT PAGE PRODUCTS BLOCK start */
+
+.about-page-products-block {
+    margin: 50px 0;
+}
+
+    .about-page-products-block .block-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+
+        .about-page-products-block .block-title > div {
+            border-bottom: 1px solid #DDDDDD;
+            height: 15px;
+            width: 100%;
+        }
+
+        .about-page-products-block .block-title h3 {
+            margin: 0 20px;
+        }
+
+    .about-page-products-block .products {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 50px;
+    }
+
+        .about-page-products-block .products .product {
+            border: 1px solid #DDDDDD;
+            padding: 8px;
+            cursor: pointer;
+            padding-bottom: 4px;
+        }
+
+            .about-page-products-block .products .product:hover {
+                -webkit-box-shadow: inset 0 0 20px 0 rgba(0,0,0,0.15);
+                -moz-box-shadow: inset 0 0 20px 0 rgba(0,0,0,0.15);
+                box-shadow: inset 0 0 20px 0 rgba(0,0,0,0.15);
+            }
+
+            .about-page-products-block .products .product .text {
+                text-align: center;
+                margin: 7px 0;
+            }
+
+                .about-page-products-block .products .product .text h4 {
+                    margin: 0;
+                    margin-bottom: 5px;
+                }
+
+/* ABOUT PAGE SECOND BLOCK end */

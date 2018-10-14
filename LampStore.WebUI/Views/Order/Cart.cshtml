@@ -1,0 +1,69 @@
+﻿@model LampStore.WebUI.Models.CartViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cart-content custom-container" ng-controller="CartController">
+    <div class="content-header">
+        <h3>
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart
+        </h3>
+    </div>
+    @if (Model.Cart.CartItems.Count != 0)
+    {
+        <ul class="cart-header">
+            <li>
+                <h5>Product image</h5>
+            </li>
+            <li style="right: 94px;">
+                <h5>Name</h5>
+            </li>
+            <li style="left: 2px;">
+                <h5>Count</h5>
+            </li>
+            <li style="left: 10px;">
+                <h5>Price</h5>
+            </li>
+            <li style="left: 10px;">
+                <h5>Delete</h5>
+            </li>
+        </ul>
+
+        <ul class="list-group cart-items" ng-cloak>
+            <li class="list-group-item" ng-show="!item.isDeleted" ng-repeat="item in viewModel.cartItems">
+                <img ng-src="{{item.Product.Picture}}" />
+                <div class="item-price">
+                    <h4>{{item.Product.Name}}</h4>
+                    <span>&euro;{{item.Product.Price}}</span>
+                </div>
+                <input type="number"
+                       min="0"
+                       ng-model="item.Count"
+                       ng-change="changeTotalPrice($index)" />
+                <span>&euro;{{item.Price}}</span>
+                <i class="fa fa-times-circle-o" ng-click="deleteCartItem(item.CartItemId, $index)"></i>
+            </li>
+        </ul>
+
+        <div class="cart-menu">
+            <div class="total-price" ng-cloak>
+                <h3>Total price: &euro;{{viewModel.totalPrice}}</h3>
+            </div>
+            <div class="controls">
+                <a href="@Url.RouteUrl("ProductsRoute", new { page = 1, type = "all", section = 1 })" class="btn btn-primary">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>Continue shopping
+                </a>
+                <a href="@Url.RouteUrl("OrderRoute")" class="btn btn-primary">
+                    Make an order<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>
+            Your cart is empty. <a href="@Url.RouteUrl("ProductsRoute", new { page = 1, type = "all", section = 1 })">Start shopping.</a> 
+        </p>
+    }
+</div>

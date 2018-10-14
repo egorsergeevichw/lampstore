@@ -1,0 +1,127 @@
+﻿@model LampStore.WebUI.Models.AboutViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="about-page-content custom-container" ng-controller="ProductController">
+    <div class="about-page-first-block">
+        <div id="mainCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#mainCarousel" data-slide-to="1"></li>
+                <li data-target="#mainCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="active item">
+                    <img src="~/Images/About/about-maincarousel-img1.jpg" />
+                    <div class="carousel-caption">
+                        <h2>First slide label</h2>
+                        <p>This lamp is the best lamp around the world.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="~/Images/About/about-maincarousel-img2.jpg" />
+                    <div class="carousel-caption">
+                        <h2>Second slide label</h2>
+                        <p>Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="~/Images/About/about-maincarousel-img3.jpg" />
+                    <div class="carousel-caption">
+                        <h2>Third slide label</h2>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control left" href="#mainCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="carousel-control right" href="#mainCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="about-page-text-block">
+        <h3>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            <strong>My store</strong>
+        </h3>
+        <p>
+            We feature American and European interior and exterior lighting, specializing in modern,
+            Italian, and Art & Crafts styles. We offer incandescent, halogen, fluorescent,
+            and LED light fixtures. We have different styles of track lighting,
+            including low voltage cable and bendable monorail lighting.
+            We also carry exterior fixtures in both line and low voltage.
+        </p>
+    </div>
+
+    <div class="about-page-products-block">
+        <div class="block-title">
+            <div></div>
+            <h3><strong>FEAUTERED</strong>&nbsp;PRODUCTS</h3>
+            <div></div>
+        </div>
+        <div class="products featured">
+            @for (var i = 0; i < @Model.Products.Count / 2; i++)
+            {
+                <div class="product" ng-click="showModal(@i)">
+                    <img src="@Model.Products[i].Picture" />
+                    <div class="text">
+                        <h4><strong>@Model.Products[i].Name</strong></h4>
+                        <span>&euro;@Model.Products[i].Price</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="about-page-text-block">
+        <h3>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            <strong>My LED</strong>
+        </h3>
+        <p>
+            LED, the newest in lighting technology,
+            is the most energy efficient and longest lasting option to illuminate a space.
+            We have a variety of LED lights, including table and floor lamps,
+            ceiling fixtures, recessed lights, under-cabinet strips,
+            and a variety of beautiful art glass pendants.
+        </p>
+    </div>
+
+    <div class="about-page-products-block">
+        <div class="block-title">
+            <div></div>
+            <h3><strong>NEW</strong>&nbsp;ARRIVALS</h3>
+            <div></div>
+        </div>
+        <div class="products featured">
+            @for (var i = @Model.Products.Count / 2; i < @Model.Products.Count; i++)
+            {
+                <div class="product" ng-click="showModal(@i)">
+                    <img src="@Model.Products[i].Picture" />
+                    <div class="text">
+                        <h4><strong>@Model.Products[i].Name</strong></h4>
+                        <span> &euro;@Model.Products[i].Price.ToString()</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="about-page-text-block">
+        <h3>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            <strong>The BEST</strong>
+        </h3>
+        <p>
+            LED lamps are incredibly energy efficient and produce the closest approximation of
+            natural light of any light source available.
+            LEDs also sport higher safety ratings, improved durability and offer more control
+            and customization than incandescent and fluorescent lighting.
+        </p>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model LampStore.WebUI.Models.OrderViewModel
+
+<div>
+    <div class="user">
+        <h4>Please, check order info:</h4>
+        <strong>Name: </strong>{{viewModel.firstName}} {{viewModel.lastName}}
+        <br />
+        <strong>Company name: </strong>{{viewModel.companyName}}
+        <br />
+        <strong>Inn: </strong>{{viewModel.inn}}
+        <br />
+        <strong>Email: </strong>{{viewModel.email}}
+        <br />
+        <strong>Phone number: </strong>{{viewModel.phoneNumber}}
+        <br />
+        <strong>Address: </strong>{{viewModel.address}}
+    </div>
+
+    <div class="cart">
+        <h4>Check cart items:</h4>
+        <ul>
+            @foreach (var item in @Model.Cart.CartItems)
+            {
+                <li>
+                    <strong>@item.Product.Name</strong> (@item.Count ct x @item.Product.Price) &euro;@item.Price
+                </li>
+            }
+        </ul>
+        <h4 class="total">Total price: &euro;@Model.Cart.TotalPrice</h4>
+    </div>
+
+    <div class="controls">
+        <button btn-request-state ng-click="isOrderInfo = false" class="btn btn-primary">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>Previous step
+        </button>
+        <button btn-request-state ng-click="makeOrder()" class="btn btn-primary">
+            Make an order
+        </button>
+    </div>
+</div>
